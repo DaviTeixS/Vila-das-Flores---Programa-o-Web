@@ -1,0 +1,253 @@
+/* ==============================
+   VARIÁVEIS GLOBAIS
+   ============================== */
+:root {
+    --cor-fundo: #f7f3ef;          /* fundo principal — off-white quente */
+    --cor-primaria: #7aab7a;       /* verde da logo */
+    --cor-acento: #e8736a;         /* rosa/salmão da logo */
+    --cor-texto: #3a3a3a;          /* texto escuro */
+    --cor-texto-claro: #f0ebe3;    /* texto sobre fundos escuros */
+    --cor-escura: #4a5a4a;         /* verde bem escuro, para footer etc */
+
+    --fonte-titulo: 'Playfair Display', serif;  /* elegante, combina com floricultura */
+    --fonte-corpo: 'Lato', sans-serif;
+
+    --sombra: 0 4px 16px rgba(0,0,0,0.10);
+    --raio: 12px;
+}
+
+/* ==============================
+   RESET BÁSICO
+   ============================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* ==============================
+   HEADER
+   ============================== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background-color: white;
+    box-shadow: var(--sombra);
+    position: sticky;    /* fica fixo no topo ao rolar a página */
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-circulo {
+    width: 48px;
+    height: 48px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.logo h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--cor-escura);
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    font-weight: 600;
+    color: var(--cor-texto);
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--cor-primaria);
+}
+
+.botao-login {
+    background-color: var(--cor-acento);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;   /* bordas totalmente arredondadas — estilo "pill" */
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.botao-login:hover {
+    opacity: 0.85;
+}
+/* ==============================
+   BANNER
+   ============================== */
+.banner {
+    background-color: var(--cor-primaria);
+    padding: 5rem 2.5rem;
+    text-align: center;
+}
+
+.banner-texto h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.banner-texto p {
+    font-size: 1.1rem;
+    color: var(--cor-texto-claro);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.banner-texto a {
+    background-color: var(--cor-acento);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-block;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.banner-texto a:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+/* ==============================
+   SOBRE
+   ============================== */
+.sobre {
+    max-width: 750px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.sobre h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    color: var(--cor-escura);
+    margin-bottom: 1rem;
+}
+
+.sobre p {
+    margin-bottom: 0.75rem;
+    color: #555;
+}
+/* ==============================
+   PRODUTOS
+   ============================== */
+.produtos {
+    padding: 3rem 2.5rem;
+    background-color: #f0ebe3;
+}
+
+.produtos h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--cor-escura);
+    margin-bottom: 2rem;
+}
+
+.lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 colunas iguais */
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.produto {
+    background-color: white;
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-align: center;
+}
+
+.produto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.13);
+}
+
+.produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;   /* recorta a imagem sem distorcer */
+}
+
+.produto h3 {
+    padding: 0.75rem 1rem 0.25rem;
+    font-size: 1rem;
+    color: var(--cor-texto);
+}
+
+.produto span {
+    display: block;
+    padding: 0 1rem 1rem;
+    color: var(--cor-primaria);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.produto span::before {
+    content: "R$ ";   /* adiciona o símbolo sem mexer no HTML */
+}
+/* ==============================
+   FOOTER
+   ============================== */
+footer {
+    background-color: var(--cor-escura);
+    color: var(--cor-texto-claro);
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem;
+    gap: 2rem;
+}
+
+footer h3 {
+    font-family: var(--fonte-titulo);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-bottom: 0.25rem;
+}
