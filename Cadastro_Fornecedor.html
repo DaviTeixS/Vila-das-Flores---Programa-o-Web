@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cadastro Fornecedor</title>
+
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#f3f3f3;
+}
+.container{
+  background:white;
+  padding:20px;
+  width:300px;
+  margin:50px auto;
+  border-radius:10px;
+}
+input{
+  width:90%;
+  padding:10px;
+  margin:8px;
+}
+button{
+  padding:10px;
+  margin:10px;
+  background:#cba6f7;
+  border:none;
+  border-radius:10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h2>Cadastro Fornecedor</h2>
+
+<input type="text" placeholder="Nome completo">
+<input type="text" placeholder="CNPJ"maxlength="11" pattern="[0-9]{11}" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="password" id="senha" placeholder="Senha">
+<input type="text" placeholder="Telefone"maxlength="11" pattern="[0-9]{11}" required>
+<input type="text" placeholder="Localidade da empresa">
+<input type="text" placeholder="CEP"maxlength="8" pattern="[0-9]{8}" required>
+
+<button onclick="cadastrar()">Finalizar Cadastro</button>
+</div>
+
+<script>
+function cadastrar(){
+  let email = document.getElementById('email').value;
+  let senha = document.getElementById('senha').value;
+
+  if(!email.includes('@')){
+    alert("Email precisa ter @");
+    return;
+  }
+
+  if(senha.length < 6){
+    alert("Senha precisa ter no mínimo 6 caracteres");
+    return;
+  }
+
+  alert("Fornecedor cadastrado!");
+
+  // 👉 AQUI você pode criar outra página depois
+  // window.location.href = "paginaFornecedor.html";
+}
+</script>
+
+</body>
+</html>
