@@ -144,24 +144,76 @@ background-attachment:fixed;
 <p> Total: R$ <span id="total"> 0 </span> </p>
 </div>
 
-
 <script>
-let total= 0;
- 
-function comprar(nome, preço) {
+
+let total = 0;
+
+let carrinho =
+JSON.parse(localStorage.getItem("carrinho")) || [];
+
+function atualizarCarrinho(){
+
     let lista = document.getElementById("Lista");
 
-    let item = document.createElement("li");
-    item.textContent = nome + " - R$ " + preço;
+    lista.innerHTML = "";
 
-    lista.appendChild(item);
+    total = 0;
 
-    total+= preço;
+    carrinho.forEach((produto, index) => {
+
+        let item = document.createElement("li");
+
+        item.innerHTML = `
+
+        ${produto.nome} - R$ ${produto.preco}
+
+        <button onclick="removerItem(${index})">
+        Remover
+        </button>
+
+        `;
+
+        lista.appendChild(item);
+
+        total += produto.preco;
+    });
+
     document.getElementById("total").textContent = total;
+}
 
-    alert(nome + "Adicionado ao Carinho! ");
-} 
+function comprar(nome, preco){
+
+    carrinho.push({
+        nome: nome,
+        preco: preco
+    });
+
+    localStorage.setItem(
+        "carrinho",
+        JSON.stringify(carrinho)
+    );
+
+    atualizarCarrinho();
+
+    alert(nome + " adicionado ao carrinho!");
+}
+
+function removerItem(index){
+
+    carrinho.splice(index, 1);
+
+    localStorage.setItem(
+        "carrinho",
+        JSON.stringify(carrinho)
+    );
+
+    atualizarCarrinho();
+}
+
+atualizarCarrinho();
+
 </script>
 
 </body>
 </html>
+
