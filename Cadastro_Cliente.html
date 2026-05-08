@@ -38,7 +38,7 @@ button{
 <div class="container">
 <h2>Cadastro Cliente</h2>
 
-<input type="text" placeholder="Nome completo">
+<input type="text" id="nome" placeholder="Nome completo">
 <input type="text" placeholder="CPF" maxlength="11" pattern="[0-9]{11}" required>
 <input type="email" id="email" placeholder="Email" required>
 <input type="password" id="senha" placeholder="Senha" pattern="[0-9]{11}" required>
@@ -50,30 +50,34 @@ button{
 </div>
 
 <script>
+
 function cadastrar(){
+
+  let nome = document.getElementById('nome').value;
+
   let email = document.getElementById('email').value;
+
   let senha = document.getElementById('senha').value;
 
-  document.getElementById("telefone").addEventListener("input", function() {
-    this.value = this.value.replace(/[^0-9]/g, "");
-}); 
-  if(!email.includes('@')){
-    alert("Email precisa ter @");
-    return;
-  }
+  let usuarios =
+  JSON.parse(localStorage.getItem('usuarios')) || [];
 
-  if(senha.length < 6){
-    alert("Senha precisa ter no mínimo 6 caracteres");
-    return;
-  }
+  usuarios.push({
+    nome: nome,
+    email: email,
+    senha: senha
+  });
 
-  localStorage.setItem('email', email);
-  localStorage.setItem('senha', senha);
+  localStorage.setItem(
+    'usuarios',
+    JSON.stringify(usuarios)
+  );
 
   alert("Cadastro realizado!");
 
-  window.location.href = "login.html";
+  window.location.href = "Login.html";
 }
+
 </script>
 
 </body>

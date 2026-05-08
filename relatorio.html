@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <title>Relatório</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Relatório</title>
 
 <style>
 
@@ -31,6 +29,19 @@ body{
     border-radius: 10px;
 }
 
+button{
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
 </style>
 </head>
 
@@ -38,7 +49,13 @@ body{
 
 <div class="container">
 
-<h1>Relatório de Compras</h1>
+<h1>Relatório do Sistema</h1>
+
+<h2>Usuários cadastrados</h2>
+
+<div id="usuarios"></div>
+
+<h2>Produtos comprados</h2>
 
 <div id="produtos"></div>
 
@@ -48,8 +65,29 @@ body{
 
 <script>
 
+let usuarios =
+JSON.parse(localStorage.getItem("usuarios")) || [];
+
 let carrinho =
 JSON.parse(localStorage.getItem("carrinho")) || [];
+
+let divUsuarios =
+document.getElementById("usuarios");
+
+usuarios.forEach((usuario) => {
+
+    divUsuarios.innerHTML += `
+
+    <div class="card">
+
+    <h3>${usuario.nome}</h3>
+
+    <p>${usuario.email}</p>
+
+    </div>
+
+    `;
+});
 
 let divProdutos =
 document.getElementById("produtos");

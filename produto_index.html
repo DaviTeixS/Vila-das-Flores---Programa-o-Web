@@ -1,3 +1,4 @@
+```html id="m9v2cx"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,8 +48,18 @@ button {
     color: white;
     border: none;
     padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
 }
-
+li{
+    list-style: none;
+    background: #f4f4f4;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+}
 #Carrinho {
     margin-top: 20px;
     background: white;
@@ -76,20 +87,36 @@ background-attachment:fixed;
 <img src="https://images.openai.com/static-rsc-4/jYeJhXZnVoz8tCvrNqWuXy77iV9My9a_0Z5GxJmN9lfAaDV-YAo04IxKyAYgWWIcG589GP_JhHBAJNqHs45KbYGDwRFopViPli4LK4WnVHzHJPqrTAK3N2q145BLZ8YnHdw9W06cRsUyDkHmohvcPCejGKalRClpcoYjw15DZlZ6rXAivpwdq09BT3Upleu9?purpose=fullsize">
 <h3>Buquê de Rosas</h3>
 <p>R$ 50,00</p>
-<button onclick="comprar('Buquê de Rosas ', 50)">Comprar</button></div>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Buquê de Rosas ', 50)">Comprar</button></div>
 
 <div class="card">
 <img src="https://images.openai.com/static-rsc-4/Lv2rArvuKdoPQwbjEsU8X0oj6fxB8BMzQ3mAYatkyk6Q1SjxQe1W55OTXsmMFH8AYLJ8IfPbXWwVV0X9ZEHW_2VbDsjB55Py8HYtBASrbPSVtWY1UrtxflMAdv89KJD133xaLst1INTWJEJvLWJtlWLV0oy8DDJp9URG_InEpvBxtIU6VG9IDuf-UdJjtypA?purpose=fullsize">
 <h3>Girassol</h3>
 <p>R$ 80,00</p>
-<button onclick="comprar('Girassol ', 80)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Girassol ', 80)">Comprar</button>
 </div>
 
 <div class="card">
 <img src="https://images.openai.com/static-rsc-4/PFD9wQOEKr9liWZiHDai4xfql1WbiPC7WCSghp2W5vtfFLfaqD2rKIGs9OcT2TNVCBKJ5o_oGgrDJGUCyvC6mDA6ia3XQRpEsAQLtYL4HLf5QW3ITOPkHgYVO4jeP8z1VNQiJXgKZvJtlxq8-Vcu94iyBDRBJTxn16AIPAG-VMyK3oR8t5CkBHEhvqcYbsV_?purpose=fullsize">
 <h3>Lirio</h3>
 <p>R$ 70,00</p>
-<button onclick="comprar('Lirio ', 70)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Lirio ', 70)">Comprar</button>
+
 </div>
 
 
@@ -97,7 +124,12 @@ background-attachment:fixed;
 <img src="https://images.openai.com/static-rsc-4/r0rApuFnW4YgDeEKG7eJkSGduFdiiUTjoQPlnY1DexBJPB4TAPdMqYhQ2VgglByBOMdjaifyztaMV3Q_163p35FDkeUby3ZZ_BbazFSXO-ui4aouYFt43NsyQe0pCdHQyQfMJkqApnR0qH2X8MMg7qjUUGkc4Qdi5H_mF3xVD8f0R7MlRbZgZ1Ad1-6SPP_7?purpose=fullsize">
 <h3>Orquidea</h3>
 <p>R$ 90,00</p>
-<button onclick="comprar('Orquidea ', 90)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Orquidea ', 90)">Comprar</button>
 </div>
 
 
@@ -105,35 +137,60 @@ background-attachment:fixed;
 <img src="https://www.melflores.com.br/ipatinga/43-large_default_2x/tulipas-brancas.jpg">
 <h3>Tulipa</h3>
 <p>R$ 90,00</p>
-<button onclick="comprar('Tulipa ',90)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Tulipa ',90)">Comprar</button>
 </div>
 
 <div class="card">
 <img src="https://www.riodeflores.com.br/media/catalog/product/4/0/400_2339_1.webp">
 <h3>Margarida</h3>
 <p>R$ 97,00</p>
-<button onclick="comprar('Margarida ',97)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Margarida ',97)">Comprar</button>
 </div>
 
 <div class="card">
 <img src="https://d21wiczbqxib04.cloudfront.net/4p0DXwHf1tD_sfKmZdLo03zs5uE=/1600x0/smart/https://osuper-product-vault.s3.sa-east-1.amazonaws.com/934f78e66b9c78d0e284108c5ddf1ee15f32fa01/77958-5b04cf1b.jpg">
 <h3>Violeta</h3>
 <p>R$ 18,00</p>
-<button onclick="comprar('Violeta ', 18)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Violeta ', 18)">Comprar</button>
 </div>
 
 <div class="card">
 <img src="https://docemagiaflores.com/wp-content/uploads/2021/08/buque-gerberas-coloridas-2.jpg">
 <h3>Buquê de Gérbenas </h3>
 <p>R$ 164,90</p>
-<button onclick="comprar('Buquê de Gérbenas ', 164.90)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Buquê de Gérbenas ', 164.90)">Comprar</button>
 </div>
 
 <div class="card">
 <img src="https://www.melflores.com.br/brasilia/93-large_default_2x/astromelias-brancas.jpg">
 <h3>Buquê de Astromelias </h3>
 <p>R$ 210,00</p>
-<button onclick="comprar('Buquê de Astromelias ', 210)">Comprar</button>
+<div>
+<button onclick="diminuirTemp(this)">-</button>
+<span>0</span>
+<button onclick="aumentarTemp(this)">+</button>
+</div>
+<button onclick="comprar(this,'Buquê de Astromelias ', 210)">Comprar</button>
 </div>
 
 </div>
@@ -163,30 +220,68 @@ function atualizarCarrinho(){
 
         let item = document.createElement("li");
 
-        item.innerHTML = `
+item.innerHTML = `
 
-        ${produto.nome} - R$ ${produto.preco}
+${produto.nome}
+<br>
+Preço: R$ ${produto.preco}
+<br>
+<br>
+<button onclick="diminuirQuantidade(${index})">-
+</button>
 
-        <button onclick="removerItem(${index})">
-        Remover
-        </button>
+${produto.quantidade}
+<button onclick="aumentarQuantidade(${index})">+
+</button>
+<br>
 
-        `;
+<br>
+Subtotal:
+R$ ${produto.preco * produto.quantidade}
+<br>
+
+<br>
+<button onclick="removerItem(${index})">
+Remover
+</button>
+`;
 
         lista.appendChild(item);
 
-        total += produto.preco;
+        total += produto.preco * produto.quantidade;
+
     });
 
     document.getElementById("total").textContent = total;
 }
+function comprar(botao, nome, preco){
 
-function comprar(nome, preco){
+    let quantidade =
+    parseInt(
+        botao.previousElementSibling.children[1].textContent
+    );
 
-    carrinho.push({
-        nome: nome,
-        preco: preco
-    });
+    if(quantidade <= 0){
+        alert("Selecione uma quantidade!");
+        return;
+    }
+
+    let produtoExistente = carrinho.find(
+        produto => produto.nome === nome
+    );
+
+    if(produtoExistente){
+
+        produtoExistente.quantidade += quantidade;
+
+    }else{
+
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            quantidade: quantidade
+        });
+    }
 
     localStorage.setItem(
         "carrinho",
@@ -194,8 +289,27 @@ function comprar(nome, preco){
     );
 
     atualizarCarrinho();
+}
 
-    alert(nome + " adicionado ao carrinho!");
+function aumentarTemp(botao){
+
+    let span = botao.parentElement.children[1];
+
+    let valor = parseInt(span.textContent);
+
+    span.textContent = valor + 1;
+}
+
+function diminuirTemp(botao){
+
+    let span = botao.parentElement.children[1];
+
+    let valor = parseInt(span.textContent);
+
+    if(valor > 0){
+
+        span.textContent = valor - 1;
+    }
 }
 
 function removerItem(index){
@@ -216,4 +330,4 @@ atualizarCarrinho();
 
 </body>
 </html>
-
+```
