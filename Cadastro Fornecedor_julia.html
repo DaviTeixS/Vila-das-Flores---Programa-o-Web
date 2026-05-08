@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Fornecedor</title>
+
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#f3f3f3;
+}
+
+.container{
+  background:white;
+  padding:20px;
+  width:300px;
+  margin:50px auto;
+  border-radius:10px;
+}
+
+input{
+  width:90%;
+  padding:10px;
+  margin:8px;
+}
+
+button{
+  padding:10px;
+  margin:10px;
+  background:#cba6f7;
+  border:none;
+  border-radius:10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Cadastro Fornecedor</h2>
+
+
+<input type="text"
+id="nome"
+placeholder="Nome completo"
+oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')"
+required>
+
+
+<input type="text"
+id="cnpj"
+placeholder="CNPJ"
+maxlength="14"
+oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+required>
+
+<input type="email"
+id="email"
+placeholder="Email"
+required>
+
+<input type="password"
+id="senha"
+placeholder="Senha"
+required>
+
+
+<input type="text"
+id="telefone"
+placeholder="Telefone"
+maxlength="11"
+oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+required>
+
+<input type="text"
+placeholder="Localidade da empresa">
+
+
+<input type="text"
+id="cep"
+placeholder="CEP"
+maxlength="8"
+oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+required>
+
+<button onclick="cadastrar()">
+Finalizar Cadastro
+</button>
+
+</div>
+
+<script>
+
+function cadastrar(){
+
+  let nome = document.getElementById('nome').value;
+  let cnpj = document.getElementById('cnpj').value;
+  let telefone = document.getElementById('telefone').value;
+  let cep = document.getElementById('cep').value;
+
+  let email = document.getElementById('email').value;
+  let senha = document.getElementById('senha').value;
+
+  if(!/^[A-Za-zÀ-ÿ\s]+$/.test(nome)){
+    alert("Nome inválido! Digite apenas letras.");
+    return;
+  }
+  if(!/^[0-9]+$/.test(cnpj)){
+    alert("CNPJ inválido! Digite apenas números.");
+    return;
+  }
+  if(!/^[0-9]+$/.test(telefone)){
+    alert("Telefone inválido! Digite apenas números.");
+    return;
+  }
+  if(!/^[0-9]+$/.test(cep)){
+    alert("CEP inválido! Digite apenas números.");
+    return;
+  }
+
+  if(!email.includes('@')){
+    alert("Email precisa ter @");
+    return;
+  }
+
+  if(senha.length < 6){
+    alert("Senha precisa ter no mínimo 6 caracteres");
+    return;
+  }
+
+  alert("Fornecedor cadastrado!");
+
+}
+
+</script>
+
+</body>
+</html>
