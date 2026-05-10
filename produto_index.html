@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de Flores</title>
 
+<a href="carrinho.html">           <!--botão para ir no carrinho-->
+<button>Ver Carrinho</button>
+</a>
+
+<script src="produto.js"></script>
 
 <style>
 body{
@@ -195,139 +200,12 @@ background-attachment:fixed;
 
 </div>
 
-<div id="Carrinho"> 
-<h2> Carrinho </h2>
-<ul id="Lista"> </ul>
-<p> Total: R$ <span id="total"> 0 </span> </p>
-</div>
+<a href="carrinho.html">
+<button>Ver Carrinho</button>
+</a>
 
-<script>
 
-let total = 0;
-
-let carrinho =
-JSON.parse(localStorage.getItem("carrinho")) || [];
-
-function atualizarCarrinho(){
-
-    let lista = document.getElementById("Lista");
-
-    lista.innerHTML = "";
-
-    total = 0;
-
-    carrinho.forEach((produto, index) => {
-
-        let item = document.createElement("li");
-
-item.innerHTML = `
-
-${produto.nome}
-<br>
-Preço: R$ ${produto.preco}
-<br>
-<br>
-<button onclick="diminuirQuantidade(${index})">-
-</button>
-
-${produto.quantidade}
-<button onclick="aumentarQuantidade(${index})">+
-</button>
-<br>
-
-<br>
-Subtotal:
-R$ ${produto.preco * produto.quantidade}
-<br>
-
-<br>
-<button onclick="removerItem(${index})">
-Remover
-</button>
-`;
-
-        lista.appendChild(item);
-
-        total += produto.preco * produto.quantidade;
-
-    });
-
-    document.getElementById("total").textContent = total;
-}
-function comprar(botao, nome, preco){
-
-    let quantidade =
-    parseInt(
-        botao.previousElementSibling.children[1].textContent
-    );
-
-    if(quantidade <= 0){
-        alert("Selecione uma quantidade!");
-        return;
-    }
-
-    let produtoExistente = carrinho.find(
-        produto => produto.nome === nome
-    );
-
-    if(produtoExistente){
-
-        produtoExistente.quantidade += quantidade;
-
-    }else{
-
-        carrinho.push({
-            nome: nome,
-            preco: preco,
-            quantidade: quantidade
-        });
-    }
-
-    localStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
-    );
-
-    atualizarCarrinho();
-}
-
-function aumentarTemp(botao){
-
-    let span = botao.parentElement.children[1];
-
-    let valor = parseInt(span.textContent);
-
-    span.textContent = valor + 1;
-}
-
-function diminuirTemp(botao){
-
-    let span = botao.parentElement.children[1];
-
-    let valor = parseInt(span.textContent);
-
-    if(valor > 0){
-
-        span.textContent = valor - 1;
-    }
-}
-
-function removerItem(index){
-
-    carrinho.splice(index, 1);
-
-    localStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
-    );
-
-    atualizarCarrinho();
-}
-
-atualizarCarrinho();
-
-</script>
-
+<script src="produto.js"></script>
 </body>
 </html>
 ```
