@@ -1,47 +1,87 @@
 
-function entrar(){
+function entrar() {
 
-  let email = document.getElementById('email').value;
-  let senha = document.getElementById('senha').value;
+  let email =
+    document.getElementById("email").value;
 
-  let emailSalvo = localStorage.getItem('email');
-  let senhaSalva = localStorage.getItem('senha');
+  let senha =
+    document.getElementById("senha").value;
 
-  if(email === emailSalvo && senha === senhaSalva){
+  let usuarios =
+    JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    alert('Login realizado!');
+  let fornecedores =
+    JSON.parse(localStorage.getItem("fornecedores")) || [];
 
-  } else {
+let usuarioEncontrado =
+usuarios.find(usuario =>
+    usuario.email === email &&
+    usuario.senha === senha
+);
 
-    alert('Dados incorretos');
+let fornecedorEncontrado =
+fornecedores.find(fornecedor =>
+    fornecedor.email === email &&
+    fornecedor.senha === senha
+);
 
-  }
+if(usuarioEncontrado){
+
+    localStorage.setItem(
+        "tipoUsuario",
+        "cliente"
+    );
+
+    alert("Login realizado!");
+
+    window.location.href = "index.html";
+
+}
+else if(fornecedorEncontrado){
+
+    localStorage.setItem(
+        "tipoUsuario",
+        "fornecedor"
+    );
+
+    localStorage.setItem(
+        "fornecedorLogado",
+        fornecedorEncontrado.email
+    );
+
+    alert("Login realizado!");
+
+    window.location.href = "index.html";
+
+}
+else{ alert("Email ou senha incorretos!");
+
 }
 
-function irCadastro(){
+function irCadastro() {
 
-  
+
   let tipo = prompt("Digite: cliente ou fornecedor");
 
-  
+
   tipo = tipo.toLowerCase();
 
   //cliente
-  if(tipo === "cliente"){
+  if (tipo === "cliente") {
 
-    window.location.href = "Cadastro_Cliente_Julia.html";
+    window.location.href = "Cadastro Cliente_Julia.html";
 
   }
 
   // fornecedor
-  else if(tipo === "fornecedor"){
+  else if (tipo === "fornecedor") {
 
-    window.location.href = "Cadastro_Fornecedor_julia.html";
+    window.location.href = "Cadastro Fornecedor_julia.html";
 
   }
 
-  
-  else{
+
+  else {
 
     alert("Opção inválida! Digite cliente ou fornecedor.");
 

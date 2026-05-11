@@ -37,6 +37,26 @@ function cadastrarFornecedor(){
     return;
   }
 
+  let fornecedores =
+JSON.parse(localStorage.getItem("fornecedores")) || [];
+
+let novoFornecedor = {
+  nome,
+  cnpj,
+  telefone,
+  cep,
+  email,
+  senha
+};
+
+fornecedores.push(novoFornecedor);
+
+localStorage.setItem(
+  "fornecedores",
+  JSON.stringify(fornecedores)
+);
+
   alert("Fornecedor cadastrado!");
 
+  window.location.href = "Login_julia.html";
 }

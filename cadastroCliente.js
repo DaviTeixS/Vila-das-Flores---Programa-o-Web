@@ -44,12 +44,25 @@ function cadastroClientes(){
     alert("Senha precisa ter no mínimo 6 caracteres");
     return;
   }
+// agora salva vários usuários, antes tava só 1 
+let usuarios =
+JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  localStorage.setItem('email', email);
-  localStorage.setItem('senha', senha);
+let novoUsuario = {
+    nome,
+    email,
+    senha
+};
 
+usuarios.push(novoUsuario);
+
+localStorage.setItem(
+    "usuarios",
+    JSON.stringify(usuarios)
+);
+//
   alert("Cadastro realizado!");
 
-  window.location.href = "login.html";
+  window.location.href = "Login_julia.html";
 }
 

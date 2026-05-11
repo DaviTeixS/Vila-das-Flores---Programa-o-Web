@@ -1,6 +1,6 @@
 // Recupera carrinho salvo
 let carrinho =
-JSON.parse(localStorage.getItem("carrinho")) || [];
+    JSON.parse(localStorage.getItem("carrinho")) || [];
 
 
 // função de compra
@@ -18,9 +18,9 @@ function comprar(botao, nome, preco) {
     }
 
     let produtoExistente =
-    carrinho.find(
-        produto => produto.nome === nome
-    );
+        carrinho.find(
+            produto => produto.nome === nome
+        );
 
     if (produtoExistente) {
 
@@ -67,3 +67,46 @@ function diminuirTemp(botao) {
         span.textContent = valor - 1;
     }
 }
+let produtos =
+    JSON.parse(localStorage.getItem("produtos")) || [];
+
+let areaProdutos =
+    document.getElementById("produtosDinamicos");
+
+produtos.forEach((produto, index) => {
+
+    areaProdutos.innerHTML += `
+
+   <div class="produto-card">
+
+    <h3>${produto.nome}</h3>
+
+    <p>Categoria: ${produto.categoria}</p>
+
+    <p>Preço: R$ ${produto.preco}</p>
+
+    <p>Fornecedor: ${produto.fornecedor}</p>
+
+    <button onclick="removerProduto(${index})">
+        Excluir Produto
+    </button>
+
+</div>
+
+       
+    `;
+    function removerProduto(index){
+
+    let produtos =
+    JSON.parse(localStorage.getItem("produtos")) || [];
+
+    produtos.splice(index, 1);
+
+    localStorage.setItem(
+        "produtos",
+        JSON.stringify(produtos)
+    );
+
+    location.reload();
+}
+});
