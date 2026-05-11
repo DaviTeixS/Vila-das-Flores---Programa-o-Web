@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Area do Fornecedor</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#2d2a22;
+    color:white;
+}
+
+header{
+    background:#111;
+    padding:20px 50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-circulo{
+    width:50px;
+    height:50px;
+    background:#7aab7a;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    max-width:1150px;
+    margin:30px auto;
+}
+
+h1, h2{
+    text-align:center;
+    color:#d8d0a8;
+}
+
+.catalogo{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:25px;
+    margin-top:30px;
+}
+
+.produto{
+    background:#111;
+    border-radius:10px;
+    overflow:hidden;
+    text-align:center;
+    padding-bottom:15px;
+}
+
+.produto img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.produto h3{
+    margin:15px 10px 5px;
+}
+
+.produto p{
+    margin:5px;
+}
+
+.preco{
+    color:#7aab7a;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.botao-remover{
+    margin-top:12px;
+    background:#e86b65;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.botao-remover:hover{
+    background:#c94f49;
+}
+
+.vendas{
+    margin-top:50px;
+    background:#111;
+    padding:25px;
+    border-radius:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th, td{
+    border:1px solid #444;
+    padding:12px;
+    text-align:left;
+}
+
+th{
+    background:#222;
+    color:#d8d0a8;
+}
+
+@media(max-width:900px){
+    .catalogo{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px){
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .catalogo{
+        grid-template-columns:1fr;
+    }
+}
+
+.botoes-produto{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+}
+
+.botao-editar,
+.botao-remover{
+    width:100%;
+    color:white;
+}
+
+.botao-editar{
+    background:#7aab7a;
+}
+
+.botao-editar:hover{
+    background:#5f8f5f;
+}
+
+.botao-remover{
+    background:#e86b65;
+}
+
+.botao-remover:hover{
+    background:#c94f49;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <div class="logo-circulo">VF</div>
+        <h2>Vila das Flores</h2>
+    </div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="cadastroProdutos.html">Cadastrar Produto</a>
+        <a href="relatorioFornecedor.html">Relatorio</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <h1>Catalogo do Fornecedor</h1>
+
+    <section id="listaProdutos" class="catalogo">
+
+        <div class="produto">
+            <img src="images/buqueGirassol.jpg.jpeg" alt="Buque de Girassol">
+            <h3>Buque de Girassol</h3>
+            <p>Categoria: Flores</p>
+            <p class="preco">R$ 69,90</p>
+           <div class="botoes-produto">
+    <button class="botao-editar" type="button">
+        Editar produto
+    </button>
+
+    <button class="botao-remover" type="button">
+        Remover produto
+    </button>
+</div>
+
+        </div>
+
+        <div class="produto">
+            <img src="images/buqueLirios.webp" alt="Buque de Lirios">
+            <h3>Buque de Lirios</h3>
+            <p>Categoria: Buques</p>
+            <p class="preco">R$ 89,90</p>
+           <div class="botoes-produto">
+    <button class="botao-editar" type="button">
+        Editar produto
+    </button>
+
+    <button class="botao-remover" type="button">
+        Remover produto
+    </button>
+</div>
+
+        </div>
+
+        <div class="produto">
+            <img src="images/buqueRosasbrancas.webp" alt="Buque de Rosas Brancas">
+            <h3>Buque de Rosas Brancas</h3>
+            <p>Categoria: Buques</p>
+            <p class="preco">R$ 89,90</p>
+            <div class="botoes-produto">
+    <button class="botao-editar" type="button">
+        Editar produto
+    </button>
+
+    <button class="botao-remover" type="button">
+        Remover produto
+    </button>
+</div>
+
+        </div>
+
+        <div class="produto">
+            <img src="images/flor1.jpg.jpeg" alt="Buque de Tulipas">
+            <h3>Buque de Tulipas</h3>
+            <p>Categoria: Flores</p>
+            <p class="preco">R$ 69,90</p>
+            <div class="botoes-produto">
+    <button class="botao-editar" type="button">
+        Editar produto
+    </button>
+
+    <button class="botao-remover" type="button">
+        Remover produto
+    </button>
+</div>
+
+        </div>
+
+        <div class="produto">
+            <img src="images/flor3.jpg.jpeg" alt="Buque flores diversas">
+            <h3>Buque flores diversas</h3>
+            <p>Categoria: Flores</p>
+            <p class="preco">R$ 99,90</p>
+           <div class="botoes-produto">
+    <button class="botao-editar" type="button">
+        Editar produto
+    </button>
+
+    <button class="botao-remover" type="button">
+        Remover produto
+    </button>
+</div>
+
+        </div>
+
+        <div class="produto">
+            <img src="images/flor4.jpg.jpeg" alt="Kit Buque e Ursinho">
+            <h3>Kit Buque e Ursinho</h3>
+            <p>Categoria: Presentes</p>
+            <p class="preco">R$ 99,90</p>
+<div class="botoes-produto">
+    <button class="botao-editar" type="button">
+        Editar produto
+    </button>
+
+    <button class="botao-remover" type="button">
+        Remover produto
+    </button>
+</div>
+
+        </div>
+
+    </section>
+
+    <section class="vendas">
+        <h2>Vendas do Fornecedor</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+
+            <tbody id="listaVendas">
+                <tr>
+                    <td>Buque de Girassol</td>
+                    <td>2</td>
+                    <td>R$ 69,90</td>
+                    <td>R$ 139,80</td>
+                </tr>
+
+                <tr>
+                    <td>Buque de Lirios</td>
+                    <td>1</td>
+                    <td>R$ 89,90</td>
+                    <td>R$ 89,90</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+</body>
+</html>
