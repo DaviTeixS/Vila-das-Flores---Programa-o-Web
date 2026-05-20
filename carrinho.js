@@ -5,10 +5,21 @@ let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 //função que atualiza o carrinho 
 function atualizarCarrinho() {
 
-    let lista = document.getElementById("Lista");
+    let lista = document.getElementById("listaCarrinho");
     lista.innerHTML = "";
 
     total = 0;
+
+if (carrinho.length === 0) {
+
+    lista.innerHTML =
+    "<h2>Carrinho vazio</h2>";
+
+    document.getElementById("total")
+    .textContent = "0.00";
+
+    return;
+}
 
     carrinho.forEach((produto, index) => {
         let item = document.createElement("div");

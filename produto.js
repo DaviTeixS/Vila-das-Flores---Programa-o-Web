@@ -1,32 +1,37 @@
 let carrinho =JSON.parse(localStorage.getItem("carrinho")) || [];
 
-function comprar(botao, nome, preco){
+function comprar(botao, nome, preco) {
 
-    let quantidade = parseInt(
-        botao.previousElementSibling.children[1].textContent
-    );
+    let span =
+    botao.previousElementSibling.children[1];
 
-    if(quantidade <= 0){
-alert("Selecione uma quantidade!");
+    let quantidade =
+    parseInt(span.textContent);
+
+    if (quantidade <= 0) {
+        alert("Selecione uma quantidade");
         return;
     }
+
+    preco = parseFloat(preco);
 
     let produtoExistente =
     carrinho.find(
         produto => produto.nome === nome
     );
 
-    if(produtoExistente){
+    if (produtoExistente) {
 
         produtoExistente.quantidade += quantidade;
 
-    }else{
+    } else {
 
         carrinho.push({
             nome: nome,
             preco: preco,
             quantidade: quantidade
         });
+
     }
 
     localStorage.setItem(
@@ -34,7 +39,9 @@ alert("Selecione uma quantidade!");
         JSON.stringify(carrinho)
     );
 
-    alert(nome + " adicionado!");
+    span.textContent = 0;
+
+    alert(nome + " adicionado ao carrinho!");
 }
 
 function aumentarTemp(botao){
