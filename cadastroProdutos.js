@@ -42,12 +42,40 @@ function cadastrarProduto(){
     let produtos =
     JSON.parse(localStorage.getItem("produtos")) || [];
 
-    let novoProduto = {
+     let novoProduto = {
         nome,
         preco,
         categoria,
         fornecedor
     };
+    if (
+    nome.trim() === "" ||
+    categoria.trim() === "" ||
+    preco === "" ||
+    quantidade === ""
+) {
+    alert("Preencha todos os campos");
+    return;
+}
+
+if (isNaN(preco) || preco <= 0) {
+    alert("Preço inválido");
+    return;
+}
+
+if (isNaN(quantidade) || quantidade <= 0) {
+    alert("Quantidade inválida");
+    return;
+}
+
+let produtoExistente = produtos.find(
+    produto => produto.nome.toLowerCase() === nome.toLowerCase()
+);
+
+if (produtoExistente) {
+    alert("Produto já cadastrado");
+    return;
+}
 
     produtos.push(novoProduto);
 

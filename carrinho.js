@@ -1,100 +1,99 @@
+let carrinho =
+JSON.parse(localStorage.getItem("carrinho")) || [];
+
+let divCarrinho =
+document.getElementById("carrinho");
+
 let total = 0;
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+/* MOSTRAR CARRINHO */
 
-//função que atualiza o carrinho 
-function atualizarCarrinho() {
+function atualizarCarrinho(){
 
-    let lista = document.getElementById("listaCarrinho");
-    lista.innerHTML = "";
+    divCarrinho.innerHTML = "";
 
     total = 0;
 
-if (carrinho.length === 0) {
+    if(carrinho.length === 0){
 
-    lista.innerHTML =
-    "<h2>Carrinho vazio</h2>";
+        divCarrinho.innerHTML += `
 
-    document.getElementById("total")
-    .textContent = "0.00";
+     
 
-    return;
-}
+<div class="itemCarrinho">
 
-    carrinho.forEach((produto, index) => {
-        let item = document.createElement("div");
-        item.classList.add("card");
-        item.innerHTML = `
+...
 
-${produto.nome}
-<br>
-Preço: R$ ${produto.preco.toFixed(2)}       
-<br>
-<br>
-<button onclick="diminuirQuantidade(${index})">-
-</button>
+            <h2>Seu carrinho está vazio</h2>
 
-${produto.quantidade}
-<button onclick="aumentarQuantidade(${index})">+
-</button>
-<br>
+        </div>
 
-<br>
-Subtotal:
-R$ ${(produto.preco * produto.quantidade).toFixed(2)}  
-<br>
+        `;
 
-<br>
-<button onclick="removerItem(${index})">
-Remover
-</button>
-`;
+        document.getElementById("quantidadeItens")
+        .innerText = "";
 
-        lista.appendChild(item);
-        total += produto.preco * produto.quantidade;
+        document.getElementById("total")
+        .innerText = "";
 
-    });
-    document.getElementById("total").textContent =
-        total.toFixed(2); //fixa duas casas decimais 
-}
-
-
-// função que aumenta quantidade no carrinho
-function aumentarQuantidade(index) {
-
-    carrinho[index].quantidade++;
-
-    localStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
-    );
-
-    atualizarCarrinho();
-}
-
-
-// função que diminui quantidade no carrinho
-function diminuirQuantidade(index) {
-
-    if (carrinho[index].quantidade > 1) {
-
-        carrinho[index].quantidade--;
-
-    } else {
-
-        carrinho.splice(index, 1);
+        return;
     }
 
-    localStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
-    );
+    carrinho.forEach((produto, index) => {
 
-    atualizarCarrinho();
+        total += produto.preco * produto.quantidade;
+
+        divCarrinho.innerHTML += `
+
+        <div class="card">
+
+            <h3>${produto.nome}</h3>
+
+            <p>
+            Preço:
+            R$ ${produto.preco.toFixed(2)}
+            </p>
+
+            <p>
+            Quantidade:
+            ${produto.quantidade}
+            </p>
+
+            <p>
+
+            Subtotal:
+            R$ ${(produto.preco * produto.quantidade).toFixed(2)}
+
+            </p>
+
+            <button onclick="removerItem(${index})">
+
+                Remover
+
+            </button>
+
+        </div>
+
+        `;
+    });
+
+    document.getElementById("quantidadeItens")
+    .innerText =
+    "Quantidade de itens: " + carrinho.length;
+
+    document.getElementById("total")
+    .innerText =
+    "Total: R$ " + total.toFixed(2);
+
 }
 
-// função que remove item do carrinho
-function removerItem(index) {
+/* REMOVER ITEM */
+
+function removerItem(index){
+
+    if(!confirm("Deseja remover este item?")){
+        return;
+    }
 
     carrinho.splice(index, 1);
 
@@ -105,10 +104,35 @@ function removerItem(index) {
 
     atualizarCarrinho();
 }
-atualizarCarrinho();
 
-//função que finaliza compra
-function finalizarCompra() {
+/* LIMPAR CARRINHO */
+
+function limparCarrinho(){
+
+    if(!confirm("Deseja limpar o carrinho?")){
+        return;
+    }
+
+    carrinho = [];
+
+    localStorage.removeItem("carrinho");
+
+    atualizarCarrinho();
+}
+
+/* FINALIZAR COMPRA */
+
+function finalizarCompra(){
+
+    if(carrinho.length === 0){
+
+        alert("Carrinho vazio!");
+        return;
+    }
+
+    if(!confirm("Deseja finalizar a compra?")){
+        return;
+    }
 
     alert("Compra finalizada com sucesso!");
 
@@ -119,3 +143,4 @@ function finalizarCompra() {
     atualizarCarrinho();
 }
 
+atualizarCarrinho();

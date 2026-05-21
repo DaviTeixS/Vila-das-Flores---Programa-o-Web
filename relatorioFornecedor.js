@@ -51,6 +51,17 @@ categorias.length;
 let listaProdutos =
 document.getElementById("listaProdutos");
 
+/* CASO NÃO TENHA PRODUTOS */
+
+if(meusProdutos.length === 0){
+
+    listaProdutos.innerHTML =
+    "<p>Nenhum produto cadastrado.</p>";
+
+}
+
+/* LISTAR PRODUTOS */
+
 meusProdutos.forEach((produto, index) => {
 
     listaProdutos.innerHTML += `
@@ -78,6 +89,10 @@ meusProdutos.forEach((produto, index) => {
 
 function removerProduto(index){
 
+    if (!confirm("Deseja excluir este produto?")) {
+        return;
+    }
+
     let produtos =
     JSON.parse(localStorage.getItem("produtos")) || [];
 
@@ -89,14 +104,14 @@ function removerProduto(index){
     let produtoRemover =
     meusProdutos[index];
 
-    let novaLista =
-    produtos.filter(produto =>
-        produto !== produtoRemover
+    produtos.splice(
+        produtos.indexOf(produtoRemover),
+        1
     );
 
     localStorage.setItem(
         "produtos",
-        JSON.stringify(novaLista)
+        JSON.stringify(produtos)
     );
 
     location.reload();

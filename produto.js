@@ -93,3 +93,33 @@ if(areaProdutos){
 
         `;
     });}
+
+    function buscarProduto(){
+
+    let textoBusca =
+    document.getElementById("buscarProduto")
+    .value
+    .toLowerCase();
+
+    let produtos =
+    document.querySelectorAll(".card");
+
+    produtos.forEach(produto => {
+
+        let nome =
+        produto.querySelector("h3")
+        .innerText
+        .toLowerCase();
+
+        if(nome.includes(textoBusca)){
+
+            produto.style.display = "";
+
+        }else{
+
+            produto.style.display = "none";
+
+        }
+
+    });
+}

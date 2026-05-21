@@ -251,3 +251,75 @@ footer p {
     opacity: 0.85;
     margin-bottom: 0.25rem;
 }
+/* ===== CARRINHO ===== */
+
+#carrinho{
+
+    width: 80%;
+
+    margin: 40px auto;
+}
+
+.itemCarrinho{
+
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    text-align: center;
+}
+
+.itemCarrinho h3{
+
+    color: #4f5d46;
+
+    margin-bottom: 10px;
+}
+
+.itemCarrinho p{
+
+    color: #555;
+
+    margin: 8px 0;
+}
+
+#resumo{
+
+    background: white;
+
+    width: 320px;
+
+    margin: 40px auto;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    text-align: center;
+}
+
+#resumo h2{
+
+    color: #4f5d46;
+
+    margin-bottom: 15px;
+}
+
+#resumo p,
+#resumo h3{
+
+    margin: 10px 0;
+}
+
+#resumo button{
+
+    margin-top: 10px;
+}
