@@ -200,110 +200,8 @@ th{
     <h1>Catalogo do Fornecedor</h1>
 
     <section id="listaProdutos" class="catalogo">
-
-        <div class="produto">
-            <img src="images/buqueGirassol.jpg.jpeg" alt="Buque de Girassol">
-            <h3>Buque de Girassol</h3>
-            <p>Categoria: Flores</p>
-            <p class="preco">R$ 69,90</p>
-           <div class="botoes-produto">
-    <button class="botao-editar" type="button">
-        Editar produto
-    </button>
-
-    <button class="botao-remover" type="button">
-        Remover produto
-    </button>
-</div>
-
-        </div>
-
-        <div class="produto">
-            <img src="images/buqueLirios.webp" alt="Buque de Lirios">
-            <h3>Buque de Lirios</h3>
-            <p>Categoria: Buques</p>
-            <p class="preco">R$ 89,90</p>
-           <div class="botoes-produto">
-    <button class="botao-editar" type="button">
-        Editar produto
-    </button>
-
-    <button class="botao-remover" type="button">
-        Remover produto
-    </button>
-</div>
-
-        </div>
-
-        <div class="produto">
-            <img src="images/buqueRosasbrancas.webp" alt="Buque de Rosas Brancas">
-            <h3>Buque de Rosas Brancas</h3>
-            <p>Categoria: Buques</p>
-            <p class="preco">R$ 89,90</p>
-            <div class="botoes-produto">
-    <button class="botao-editar" type="button">
-        Editar produto
-    </button>
-
-    <button class="botao-remover" type="button">
-        Remover produto
-    </button>
-</div>
-
-        </div>
-
-        <div class="produto">
-            <img src="images/flor1.jpg.jpeg" alt="Buque de Tulipas">
-            <h3>Buque de Tulipas</h3>
-            <p>Categoria: Flores</p>
-            <p class="preco">R$ 69,90</p>
-            <div class="botoes-produto">
-    <button class="botao-editar" type="button">
-        Editar produto
-    </button>
-
-    <button class="botao-remover" type="button">
-        Remover produto
-    </button>
-</div>
-
-        </div>
-
-        <div class="produto">
-            <img src="images/flor3.jpg.jpeg" alt="Buque flores diversas">
-            <h3>Buque flores diversas</h3>
-            <p>Categoria: Flores</p>
-            <p class="preco">R$ 99,90</p>
-           <div class="botoes-produto">
-    <button class="botao-editar" type="button">
-        Editar produto
-    </button>
-
-    <button class="botao-remover" type="button">
-        Remover produto
-    </button>
-</div>
-
-        </div>
-
-        <div class="produto">
-            <img src="images/flor4.jpg.jpeg" alt="Kit Buque e Ursinho">
-            <h3>Kit Buque e Ursinho</h3>
-            <p>Categoria: Presentes</p>
-            <p class="preco">R$ 99,90</p>
-<div class="botoes-produto">
-    <button class="botao-editar" type="button">
-        Editar produto
-    </button>
-
-    <button class="botao-remover" type="button">
-        Remover produto
-    </button>
-</div>
-
-        </div>
-
     </section>
+
 
     <section class="vendas">
         <h2>Vendas do Fornecedor</h2>
@@ -337,6 +235,60 @@ th{
     </section>
 
 </main>
+
+<script>
+    function carregarProdutosFornecedor() {
+        let lista = document.getElementById("listaProdutos");
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+        let fornecedor = localStorage.getItem("fornecedorLogado");
+
+        lista.innerHTML = "";
+
+        produtos.forEach((produto, index) => {
+            if (produto.fornecedor === fornecedor) {
+                lista.innerHTML += `
+                <div class="produto">
+                    <img src="${produto.imagem || 'images/flor1.jpg.jpeg'}" alt="${produto.nome}">
+                    <h3>${produto.nome}</h3>
+                    <p>Categoria: ${produto.categoria}</p>
+                    <p>Estoque: ${produto.quantidade}</p>
+                    <p class="preco">R$ ${parseFloat(produto.preco).toFixed(2)}</p>
+
+                    <div class="botoes-produto">
+                        <button class="botao-editar" onclick="editarProduto(${index})">
+                            Editar produto
+                        </button>
+
+                        <button class="botao-remover" onclick="removerProduto(${index})">
+                            Remover produto
+                        </button>
+                    </div>
+                </div>
+            `;
+            }
+        });
+    }
+
+    function editarProduto(index) {
+        localStorage.setItem("produtoEditando", index);
+        window.location.href = "cadastroProdutos.html";
+    }
+
+    function removerProduto(index) {
+        if (!confirm("Deseja remover este produto?")) {
+            return;
+        }
+
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+        produtos.splice(index, 1);
+
+        localStorage.setItem("produtos", JSON.stringify(produtos));
+
+        carregarProdutosFornecedor();
+    }
+
+    carregarProdutosFornecedor();
+</script>
 
 </body>
 </html>
