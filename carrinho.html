@@ -1,24 +1,57 @@
-<div id="carrinho"></div>
 
-<div id="resumo">
+<!DOCTYPE html>
 
-    <h2>Resumo da Compra</h2>
+<html lang="pt-br">
 
-    <p id="quantidadeItens"></p>
+<head>
 
-    <h3 id="total"></h3>
+    <!-- Permite usar acentos corretamente -->
+    <meta charset="UTF-8">
 
-    <button onclick="finalizarCompra()">
-        Finalizar Compra
-    </button>
+    <!-- Faz o site funcionar bem em celular/tablet -->
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <button onclick="limparCarrinho()">
-        Limpar Carrinho
-    </button>
+    <!-- Nome que aparece na aba do navegador -->
+    <title>Carrinho</title>
 
-</div>
+    <!-- Conecta o arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
-<script src="carrinho.js"></script>
+</head>
 
+<body>
 
+    <!-- Div onde os produtos do carrinho serão mostrados pelo JS -->
+    <div id="carrinho"></div>
+
+    <!-- Área de resumo da compra -->
+    <div id="resumo">
+
+        <!-- Título do resumo -->
+        <h2>Resumo da Compra</h2>
+
+        <!-- Mostra quantidade total de itens -->
+        <p id="quantidadeItens"></p>
+
+        <!-- Mostra valor total da compra -->
+        <h3 id="total"></h3>
+
+        <!-- Botão que chama função finalizarCompra() -->
+        <button onclick="finalizarCompra()">
+            Finalizar Compra
+        </button>
+
+        <!-- Botão que chama função limparCarrinho() -->
+        <button onclick="limparCarrinho()">
+            Limpar Carrinho
+        </button>
+
+    </div>
+
+    <!-- Conecta o arquivo JavaScript -->
+    <script src="carrinho.js"></script>
+
+</body>
+
+</html>
