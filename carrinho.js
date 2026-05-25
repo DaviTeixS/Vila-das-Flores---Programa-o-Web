@@ -1,3 +1,67 @@
+window.onload = function () {
+
+    let tipoUsuario =
+    localStorage.getItem("tipoUsuario");
+
+    let painel =
+    document.getElementById("painelFornecedor");
+
+    let btnSair =
+    document.getElementById("btnSair");
+
+    // começa escondido
+    btnSair.style.display = "none";
+
+    // só aparece se tiver login
+    if(tipoUsuario){
+
+        btnSair.style.display = "block";
+    }
+
+    // painel fornecedor
+    if(tipoUsuario === "fornecedor"){
+
+        painel.innerHTML = `
+        <a href="cadastroProdutos.html">
+            <button>Cadastrar Produto</button>
+        </a>
+
+        <a href="meusProdutos.html">
+            <button>Meus Produtos</button>
+        </a>
+
+        <a href="relatorioFornecedor.html">
+            <button>Relatório</button>
+        </a>
+        `;
+    }
+}
+
+function sair(){
+
+    localStorage.removeItem("tipoUsuario");
+    localStorage.removeItem("fornecedorLogado");
+
+    location.reload();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Recupera os produtos salvos no localStorage
 // Se não existir nada, cria um array vazio
 let carrinho =
@@ -60,7 +124,7 @@ function atualizarCarrinho() {
         // Adiciona os produtos na tela
         divCarrinho.innerHTML += `
 
-        <div class="card">
+        <div class="itemCarrinho">
 
             <!-- Nome do produto -->
             <h3>${produto.nome}</h3>
@@ -72,25 +136,20 @@ function atualizarCarrinho() {
             </p>
 
             <!-- Quantidade do produto -->
-            <p>
-
-Quantidade:
-
-<!-- Botão diminuir quantidade -->
+   <div class="quantidade-carrinho">
 <button onclick="alterarQuantidade(${index}, -1)">
--
+        -
 </button>
 
-<!-- Quantidade atual -->
-${produto.quantidade}
+    <span>
+        ${produto.quantidade}
+    </span>
 
-<!-- Botão aumentar quantidade -->
-<button onclick="alterarQuantidade(${index}, 1)">
-+
-</button>
+    <button onclick="alterarQuantidade(${index}, 1)">
+        +
+    </button>
 
-</p>
-
+</div>
             <!-- Valor total daquele produto -->
             <p>
 
@@ -100,7 +159,7 @@ ${produto.quantidade}
             </p>
 
             <!-- Remove o produto do carrinho -->
-            <button onclick="removerItem(${index})">
+            <button class="remover" onclick="removerItem(${index})">
 
                 Remover
 

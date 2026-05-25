@@ -3,7 +3,6 @@
    ============================== */
 
 :root {
-
     --cor-fundo: #f7f3ef;
 
     --cor-primaria: #7aab7a;
@@ -52,6 +51,13 @@ a{
     text-decoration: none;
 
     color: inherit;
+}
+
+img{
+
+    max-width: 100%;
+
+    display: block;
 }
 
 /* ==============================
@@ -144,8 +150,31 @@ nav a:hover{
 }
 
 /* ==============================
-   LOGIN
+   ÁREA LOGIN/CARRINHO
    ============================== */
+
+.acoes-menu{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1.5rem;
+}
+
+.botao-carrinho{
+
+    font-weight: 600;
+
+    color: var(--cor-texto);
+
+    transition: color 0.2s;
+}
+
+.botao-carrinho:hover{
+
+    color: var(--cor-primaria);
+}
 
 .botao-login{
 
@@ -159,7 +188,7 @@ nav a:hover{
 
     font-weight: 600;
 
-    transition: 0.2s;
+    transition: opacity 0.2s;
 }
 
 .botao-login:hover{
@@ -183,7 +212,7 @@ nav a:hover{
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: opacity 0.2s;
 
     display: none;
 }
@@ -194,193 +223,108 @@ nav a:hover{
 }
 
 /* ==============================
-   RESUMO
+   TÍTULO
    ============================== */
 
-/* ==============================
-   RESUMO
-   ============================== */
+.titulo-produtos{
 
-#resumo{
+    text-align: center;
 
-    background: white;
+    margin-top: 50px;
 
-    width: 85%;
-
-    margin: 30px auto 10px;
-
-    padding: 22px 35px;
-
-    border-radius: 24px;
-
-    box-shadow: var(--sombra);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 25px;
-
-    position: sticky;
-
-    top: 95px;
-
-    z-index: 90;
+    margin-bottom: 30px;
 }
 
-#resumo h2{
-
-    color: var(--cor-escura);
+.titulo-produtos h2{
 
     font-family: var(--fonte-titulo);
 
-    font-size: 1.8rem;
+    font-size: 2.2rem;
 
-    margin-right: auto;
+    color: var(--cor-escura);
 }
 
-#quantidadeItens{
-
-    color: #666;
-
-    font-size: 1rem;
-
-    font-weight: 600;
-}
-
-#total{
-
-    color: var(--cor-primaria);
-
-    font-size: 1.5rem;
-
-    font-weight: bold;
-}
-
-#resumo button{
-
-    background-color: var(--cor-acento);
-
-    color: white;
-
-    border: none;
-
-    padding: 12px 22px;
-
-    border-radius: 999px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-
-    width: auto;
-}
-
-#resumo button:hover{
-
-    opacity: 0.9;
-
-    transform: translateY(-2px);
-}
 /* ==============================
-   CARRINHO
+   PRODUTOS
    ============================== */
 
-#carrinho{
+.produtos{
 
-    width: 85%;
+    display: flex;
 
-    margin: 40px auto;
+    justify-content: center;
 
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    flex-wrap: wrap;
 
     gap: 30px;
 
-    justify-items: center;
+    padding: 20px 40px 60px;
 }
 
-.itemCarrinho{
+.card-produto{
 
     background-color: white;
 
+    width: 260px;
+
+    padding: 18px;
+
     border-radius: 20px;
 
-    padding: 25px;
+    text-align: center;
 
     box-shadow: var(--sombra);
 
-    transition: 0.25s;
+    transition: 0.3s;
+}
+
+.card-produto:hover{
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.13);
+}
+
+.card-produto img{
 
     width: 100%;
 
-    max-width: 360px;
+    height: 220px;
 
-    text-align: center;
+    object-fit: cover;
 
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
+    border-radius: 15px;
 }
 
-.itemCarrinho:hover{
+.card-produto h3{
 
-    transform: translateY(-4px);
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-}
-
-.itemCarrinho h3{
+    margin-top: 15px;
 
     color: var(--cor-escura);
 
-    font-family: var(--fonte-titulo);
-
-    font-size: 1.5rem;
-
-    margin-bottom: 15px;
+    font-size: 1.1rem;
 }
 
-.itemCarrinho p{
+.card-produto p{
 
-    color: #666;
+    margin-top: 10px;
 
-    font-size: 1rem;
+    color: var(--cor-primaria);
 
-    margin: 10px 0;
+    font-weight: bold;
 
-    text-align: center;
+    font-size: 1.1rem;
 }
 
 /* ==============================
    QUANTIDADE
    ============================== */
 
-.quantidade-carrinho{
+.quantidade button{
 
-    margin: 18px 0;
+    width: 38px;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-}
-
-.quantidade-carrinho button{
-
-    width: 35px;
-
-    height: 35px;
+    height: 38px;
 
     border-radius: 50%;
 
@@ -390,38 +334,41 @@ nav a:hover{
 
     color: white;
 
-    font-size: 18px;
+    font-size: 20px;
 
     font-weight: bold;
 
     cursor: pointer;
 
     transition: 0.2s;
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.10);
 }
 
-.quantidade-carrinho button:hover{
+.quantidade button:hover{
 
     transform: scale(1.08);
 
     opacity: 0.9;
 }
 
-.quantidade-carrinho span{
+.quantidade span{
 
-    color: var(--cor-escura);
+    min-width: 25px;
+
+    text-align: center;
+
+    font-weight: bold;
 
     font-size: 1.1rem;
 
-    font-weight: bold;
+    color: var(--cor-escura);
 }
-
 /* ==============================
-   BOTÃO REMOVER
+   BOTÃO COMPRAR
    ============================== */
 
-.remover{
-
-    margin-top: 15px;
+.comprar{
 
     background-color: var(--cor-acento);
 
@@ -429,7 +376,7 @@ nav a:hover{
 
     border: none;
 
-    padding: 12px 18px;
+    padding: 12px 20px;
 
     border-radius: 999px;
 
@@ -440,11 +387,11 @@ nav a:hover{
     transition: 0.2s;
 }
 
-.remover:hover{
+.comprar:hover{
 
     opacity: 0.9;
 
-    transform: translateY(-2px);
+    transform: scale(1.03);
 }
 
 /* ==============================
@@ -480,4 +427,45 @@ footer p{
     font-size: 0.9rem;
 
     opacity: 0.85;
+}
+
+/* PESQUISA */
+
+.pesquisa{
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 40px;
+
+    margin-bottom: 30px;
+}
+
+.pesquisa input{
+
+    width: 350px;
+
+    padding: 14px 20px;
+
+    border-radius: 999px;
+
+    border: 2px solid #ddd;
+
+    background-color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pesquisa input:focus{
+
+    border-color: var(--cor-primaria);
+
+    box-shadow: 0 4px 12px rgba(122,171,122,0.2);
 }
