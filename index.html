@@ -10,26 +10,16 @@
 </head>
 <body>
 
+<!-- Ícone de usuário logado OU botão de login -->
+<div class="usuario-logado" id="iconeLogado" style="display:none" title="Logado">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+    </svg>
+</div>
 
-    <!--MENU PRINCIPAL -->
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="produto_index.html">Produtos</a>
-        <a href="#contato" id="btnContato">Contato</a>
-        <a href="relatorioFornecedor.html" id="linkRelatorio" style="display:none">Relatório</a>
-    </nav>
+<button id="btnSair" onclick="sair()" style="display:none">Sair</button>
 
-    <!-- Ícone de usuário logado OU botão de login -->
-    <a class="botao-login" href="Login_julia.html" id="btnLogin">Login</a>
-    <div class="usuario-logado" id="iconeLogado" style="display:none" title="Logado">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-            <circle cx="12" cy="8" r="4"/>
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-        </svg>
-    </div>
-
-    <button id="btnSair" onclick="sair()" style="display:none">Sair</button>
-</header>
 
 <!--BANNER PRINCIPAL -->
 <section class="banner">

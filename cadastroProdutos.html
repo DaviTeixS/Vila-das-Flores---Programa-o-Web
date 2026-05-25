@@ -12,52 +12,73 @@
 
 <style>
 
-body{
-    font-family: Arial;
-    background:#f3f3f3;
-    margin:0;
-    padding:0;
-}
+    body {
+        font-family: var(--fonte-corpo);
+        background-color: var(--cor-fundo);
+        color: var(--cor-texto);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
 
-.container{
-    width:350px;
-    background:white;
-    margin:50px auto;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
+    .container {
+        width: 360px;
+        background: white;
+        margin: 3rem auto;
+        padding: 2.5rem 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+        text-align: center;
+    }
 
-h2{
-    text-align:center;
-    color:#8e44ad;
-}
+    .container h2 {
+        font-family: var(--fonte-titulo);
+        color: var(--cor-escura);
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
 
-input, select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:10px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
-}
+    input,
+    select {
+        width: 100%;
+        padding: 0.7rem 1rem;
+        margin-bottom: 0.75rem;
+        border: 1.5px solid #d0cfc9;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-family: var(--fonte-corpo);
+        font-size: 0.95rem;
+        background: var(--cor-fundo);
+        color: var(--cor-texto);
+        outline: none;
+        transition: border 0.2s;
+    }
 
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#cba6f7;
-    font-size:16px;
-    cursor:pointer;
-}
+    input:focus,
+    select:focus {
+        border-color: var(--cor-primaria);
+    }
 
-button:hover{
-    background:#b48ee6;
-}
+    button {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 999px;
+        background: var(--cor-primaria);
+        color: white;
+        font-family: var(--fonte-corpo);
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
 
+    button:hover {
+        opacity: 0.85;
+    }
 </style>
-</head>
+
+    </head>
 
 <body>
 
@@ -74,7 +95,7 @@ required>
 id="precoProduto"
 placeholder="Preço do produto"
 required>
-]
+
     <input
         type="number"
         id="quantidadeProduto"
