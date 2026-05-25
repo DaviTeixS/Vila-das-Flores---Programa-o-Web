@@ -6,19 +6,19 @@
     <title>Cadastro Cliente</title>
 
 <style>
-  
+
 body{
-  font-family: Arial;
+  font-family:Arial;
   text-align:center;
   background:#f3f3f3;
 }
 
 .container{
   background:white;
-  padding:20px;
-  width:300px;
+  width:330px;
   margin:50px auto;
-  border-radius:10px;
+  padding:20px;
+  border-radius:15px;
 }
 
 input{
@@ -28,12 +28,14 @@ input{
 }
 
 button{
+  width:90%;
   padding:10px;
-  margin:10px;
-  background:#cba6f7;
+  margin-top:10px;
   border:none;
   border-radius:10px;
+  background:#cba6f7;
 }
+
 </style>
 
 </head>
@@ -43,59 +45,105 @@ button{
 
 <h2>Cadastro Cliente</h2>
 
-
 <input type="text"
 id="nome"
 placeholder="Nome completo"
-oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')"
-required>
-
+oninput="this.value=this.value.replace(/[^A-Za-zÀ-ÿ\s]/g,'')">
 
 <input type="text"
 id="cpf"
 placeholder="CPF"
 maxlength="11"
-oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-required>
+oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 
 <input type="email"
 id="email"
-placeholder="Email"
-required>
+placeholder="Email">
 
 <input type="password"
 id="senha"
-placeholder="Senha"
-required>
-
+placeholder="Senha">
 
 <input type="text"
 id="telefone"
-placeholder="Telefone (DDD)"
+placeholder="Telefone"
 maxlength="11"
-oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-required>
+oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 
 <input type="text"
+id="endereco"
 placeholder="Endereço">
-
 
 <input type="text"
 id="cep"
 placeholder="CEP"
 maxlength="8"
-oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-required>
+oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 
-<button onclick="cadastroClientes()">
+<br>
+
+<label>
+<input type="checkbox" onclick="mostrarSenha()">
+Mostrar senha
+</label>
+
+<br><br>
+
+<button onclick="cadastrar()">
 Finalizar Cadastro
 </button>
 
 </div>
 
+<script>
 
-<script src="cadastroCliente.js"></script>
+function mostrarSenha(){
+
+  let senha = document.getElementById("senha");
+
+  if(senha.type === "password"){
+
+    senha.type = "text";
+
+  }else{
+
+    senha.type = "password";
+
+  }
+}
+
+function cadastrar(){
+
+  let nome = document.getElementById('nome').value;
+  let cpf = document.getElementById('cpf').value;
+  let telefone = document.getElementById('telefone').value;
+  let cep = document.getElementById('cep').value;
+  let endereco = document.getElementById('endereco').value;
+
+  let email = document.getElementById('email').value;
+  let senha = document.getElementById('senha').value;
+
+  let usuario = {
+
+    tipo:"cliente",
+    nome:nome,
+    cpf:cpf,
+    telefone:telefone,
+    cep:cep,
+    endereco:endereco,
+    email:email,
+    senha:senha
+
+  };
+
+  localStorage.setItem(email, JSON.stringify(usuario));
+
+  alert("Cliente cadastrado com sucesso!");
+
+  window.location.href = "Login.html";
+}
+
+</script>
 
 </body>
 </html>
-
