@@ -1,217 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – Vila das Flores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #7aab7a;
+            --cor-acento: #e8736a;
+            --cor-fundo: #f7f3ef;
+            --cor-escura: #4a5a4a;
+            --cor-texto: #3a3a3a;
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Lato', sans-serif;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-body{
-  font-family: Arial;
-  text-align:center;
-  background-image: url("fundo.jpg");
-  background-size: cover;
-  background-position: center;
-}
+        /* mini header */
+        .topo {
+            width: 100%;
+            background: white;
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .logo-circulo {
+            width: 40px; height: 40px;
+            background: var(--cor-primaria);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700;
+        }
+        .topo h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--cor-escura);
+        }
+        .topo a { margin-left: auto; font-size: 0.9rem; color: var(--cor-primaria); font-weight: 600; text-decoration: none; }
 
-.container{
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(10px);
-  padding:20px;
-  width:340px;
-  margin:80px auto;
-  border-radius:15px;
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
-}
+        /* card */
+        .container {
+            background: white;
+            padding: 2.5rem 2rem;
+            width: 360px;
+            margin: 3rem auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+            text-align: center;
+        }
 
-input{
-  width:90%;
-  padding:10px;
-  margin:10px;
-  border-radius:10px;
-  border:none;
-}
+        .container h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-escura);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
 
-button{
-  padding:10px;
-  margin:5px;
-  background:#d8b4f8;
-  border:none;
-  border-radius:20px;
-  cursor:pointer;
-  width:90%;
-}
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.75rem;
+            border: 1.5px solid #d0cfc9;
+            border-radius: 8px;
+            font-family: var(--fonte-corpo);
+            font-size: 0.95rem;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            outline: none;
+            transition: border 0.2s;
+        }
+        input:focus { border-color: var(--cor-primaria); }
 
-button:hover{
-  background:#c084fc;
-}
+        .label-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.25rem;
+            justify-content: center;
+        }
 
-label{
-  font-size:14px;
-}
+        .btn-principal {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--cor-primaria);
+            color: white;
+            border: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 0.75rem;
+            transition: opacity 0.2s;
+        }
+        .btn-principal:hover { opacity: 0.85; }
 
-.balao{
-  margin-top:20px;
-  background:#f3e8ff;
-  padding:15px;
-  border-radius:15px;
-  display:none;
-  animation: aparecer 0.5s;
-}
+        .btn-secundario {
+            width: 100%;
+            padding: 0.65rem;
+            background: transparent;
+            color: var(--cor-primaria);
+            border: 2px solid var(--cor-primaria);
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-secundario:hover { background: var(--cor-primaria); color: white; }
 
-@keyframes aparecer{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
+        .btn-link {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 0.82rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            text-decoration: underline;
+        }
 
-  to{
-    opacity:1;
-    transform:translateY(0px);
-  }
-}
+        .balao {
+            margin-top: 1rem;
+            background: #f0faf0;
+            border: 1px solid var(--cor-primaria);
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+            animation: aparecer 0.4s;
+            font-size: 0.9rem;
+        }
 
-</style>
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(-8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-
 <body>
 
+<div class="topo">
+    <div class="logo-circulo">VF</div>
+    <h1>Vila das Flores</h1>
+    <a href="index.html">← Voltar</a>
+</div>
+
 <div class="container">
+    <h2>Login</h2>
 
-<h2>Login</h2>
+    <input type="email" id="email" placeholder="Seu e-mail">
+    <input type="password" id="senha" placeholder="Sua senha">
 
-<input type="email"
-id="email"
-placeholder="Digite seu email">
+    <label class="label-checkbox">
+        <input type="checkbox" onclick="mostrarSenha()">
+        Mostrar senha
+    </label>
 
-<input type="password"
-id="senha"
-placeholder="Digite sua senha">
+    <button class="btn-principal" onclick="entrar()">Entrar</button>
+    <button class="btn-secundario" onclick="window.location.href='Cadastro Cliente_Julia.html'">Cadastrar como Cliente</button>
+    <button class="btn-secundario" onclick="window.location.href='Cadastro Fornecedor_julia.html'">Cadastrar como Fornecedor</button>
+    <button class="btn-link" onclick="recuperarSenha()">Esqueci minha senha</button>
 
-<br>
-
-<label>
-<input type="checkbox" onclick="mostrarSenha()">
-Mostrar senha
-</label>
-
-<br><br>
-
-<button onclick="entrar()">
-Entrar
-</button>
-
-
-<button onclick="window.location.href='Cadastro Cliente.html'">
-
-Cadastrar sou Cliente
-
-</button>
-
-
-<button onclick="window.location.href='Cadastro Fornecedor.html'">
-
-Cadastrar sou Fornecedor
-
-</button>
-
-<button onclick="recuperarSenha()">
-
-Esqueci minha senha
-
-</button>
-
-
-<div class="balao" id="balaoSenha">
-
+    <div class="balao" id="balaoSenha"></div>
 </div>
 
-</div>
-
+<script src="Login.js"></script>
 <script>
-
-
-function mostrarSenha(){
-
-  let senha = document.getElementById("senha");
-
-  if(senha.type === "password"){
-
-    senha.type = "text";
-
-  }else{
-
-    senha.type = "password";
-
-  }
+function mostrarSenha() {
+    let senha = document.getElementById("senha");
+    senha.type = senha.type === "password" ? "text" : "password";
 }
 
-
-function entrar(){
-
-  let email = document.getElementById("email").value;
-  let senha = document.getElementById("senha").value;
-
-  let usuario = JSON.parse(localStorage.getItem(email));
-
-  if(usuario){
-
-    if(usuario.senha === senha){
-
-      alert("Login realizado com sucesso!");
-
-    }else{
-
-      alert("Senha incorreta!");
-
+function recuperarSenha() {
+    let email = prompt("Digite seu email cadastrado:");
+    if (!email) return;
+    let usuario = JSON.parse(localStorage.getItem(email));
+    let balao = document.getElementById("balaoSenha");
+    balao.style.display = "block";
+    if (usuario) {
+        balao.innerHTML = `<strong>Usuário encontrado</strong><br>Nome: ${usuario.nome}<br>Senha: ${usuario.senha}`;
+    } else {
+        balao.innerHTML = `<strong>Email não encontrado.</strong>`;
     }
-
-  }else{
-
-    alert("Usuário não encontrado!");
-
-  }
 }
-
-
-function recuperarSenha(){
-
-  let email = prompt("Digite seu email cadastrado:");
-
-  let usuario = JSON.parse(localStorage.getItem(email));
-
-  let balao = document.getElementById("balaoSenha");
-
-  if(usuario){
-
-    balao.style.display = "block";
-
-    balao.innerHTML = `
-
-      <h3>Usuário Encontrado</h3>
-
-      <p><b>Nome:</b> ${usuario.nome}</p>
-
-      <p><b>Senha:</b> ${usuario.senha}</p>
-
-    `;
-
-  }else{
-
-    balao.style.display = "block";
-
-    balao.innerHTML = `
-
-      <h3>Email não encontrado!</h3>
-
-    `;
-
-  }
-}
-
 </script>
-
 </body>
 </html>

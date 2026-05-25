@@ -1,148 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cadastro Fornecedor</title>
+    <title>Cadastro Fornecedor – Vila das Flores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #7aab7a;
+            --cor-acento: #e8736a;
+            --cor-fundo: #f7f3ef;
+            --cor-escura: #4a5a4a;
+            --cor-texto: #3a3a3a;
+            --fonte-titulo: 'Playfair Display', serif;
+            --fonte-corpo: 'Lato', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .topo {
+            width: 100%;
+            background: white;
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .logo-circulo {
+            width: 40px; height: 40px;
+            background: var(--cor-primaria);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700;
+        }
+        .topo h1 { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--cor-escura); }
+        .topo a { margin-left: auto; font-size: 0.9rem; color: var(--cor-primaria); font-weight: 600; text-decoration: none; }
 
-<style>
-
-body{
-  font-family:Arial;
-  text-align:center;
-  background:#f3f3f3;
-}
-
-.container{
-  background:white;
-  width:330px;
-  margin:50px auto;
-  padding:20px;
-  border-radius:15px;
-}
-
-input{
-  width:90%;
-  padding:10px;
-  margin:8px;
-}
-
-button{
-  width:90%;
-  padding:10px;
-  margin-top:10px;
-  border:none;
-  border-radius:10px;
-  background:#cba6f7;
-}
-
-</style>
-
+        .container {
+            background: white;
+            padding: 2.5rem 2rem;
+            width: 380px;
+            margin: 3rem auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+            text-align: center;
+        }
+        .container h2 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-escura);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.75rem;
+            border: 1.5px solid #d0cfc9;
+            border-radius: 8px;
+            font-family: var(--fonte-corpo);
+            font-size: 0.95rem;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            outline: none;
+            transition: border 0.2s;
+        }
+        input:focus { border-color: var(--cor-primaria); }
+        .label-checkbox {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: #666;
+            margin-bottom: 1.25rem; justify-content: center;
+        }
+        .btn-principal {
+            width: 100%; padding: 0.75rem;
+            background: var(--cor-acento); color: white;
+            border: none; border-radius: 999px;
+            font-weight: 700; font-size: 1rem;
+            cursor: pointer; transition: opacity 0.2s;
+        }
+        .btn-principal:hover { opacity: 0.85; }
+    </style>
 </head>
 <body>
 
-<div class="container">
-
-<h2>Cadastro Fornecedor</h2>
-
-<input type="text"
-id="nome"
-placeholder="Nome da empresa">
-
-<input type="text"
-id="cnpj"
-placeholder="CNPJ"
-maxlength="14"
-oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-
-<input type="email"
-id="email"
-placeholder="Email">
-
-<input type="password"
-id="senha"
-placeholder="Senha">
-
-<input type="text"
-id="telefone"
-placeholder="Telefone"
-maxlength="11"
-oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-
-<input type="text"
-id="localidade"
-placeholder="Localidade da empresa">
-
-<input type="text"
-id="cep"
-placeholder="CEP"
-maxlength="8"
-oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-
-<br>
-
-<label>
-<input type="checkbox" onclick="mostrarSenha()">
-Mostrar senha
-</label>
-
-<br><br>
-
-<button onclick="cadastrar()">
-Finalizar Cadastro
-</button>
-
+<div class="topo">
+    <div class="logo-circulo">VF</div>
+    <h1>Vila das Flores</h1>
+    <a href="Login_julia.html">← Voltar</a>
 </div>
 
+<div class="container">
+    <h2>Cadastro Fornecedor</h2>
+
+    <input type="text" id="nome" placeholder="Nome da empresa">
+    <input type="text" id="cnpj" placeholder="CNPJ" maxlength="14"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <input type="email" id="email" placeholder="E-mail">
+    <input type="password" id="senha" placeholder="Senha">
+    <input type="text" id="telefone" placeholder="Telefone" maxlength="11"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <input type="text" id="localidade" placeholder="Localidade da empresa">
+    <input type="text" id="cep" placeholder="CEP" maxlength="8"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+
+    <label class="label-checkbox">
+        <input type="checkbox" onclick="mostrarSenha()">
+        Mostrar senha
+    </label>
+
+    <button class="btn-principal" onclick="cadastrar()">Finalizar Cadastro</button>
+</div>
+
+<script src="cadastroFornecedor.js"></script>
 <script>
-
-function mostrarSenha(){
-
-  let senha = document.getElementById("senha");
-
-  if(senha.type === "password"){
-
-    senha.type = "text";
-
-  }else{
-
-    senha.type = "password";
-
-  }
+function mostrarSenha() {
+    let s = document.getElementById("senha");
+    s.type = s.type === "password" ? "text" : "password";
 }
-
-function cadastrar(){
-
-  let nome = document.getElementById('nome').value;
-  let cnpj = document.getElementById('cnpj').value;
-  let telefone = document.getElementById('telefone').value;
-  let cep = document.getElementById('cep').value;
-  let localidade = document.getElementById('localidade').value;
-
-  let email = document.getElementById('email').value;
-  let senha = document.getElementById('senha').value;
-
-  let fornecedor = {
-
-    tipo:"fornecedor",
-    nome:nome,
-    cnpj:cnpj,
-    telefone:telefone,
-    cep:cep,
-    localidade:localidade,
-    email:email,
-    senha:senha
-
-  };
-
-  localStorage.setItem(email, JSON.stringify(fornecedor));
-
-  alert("Fornecedor cadastrado com sucesso!");
-
-  window.location.href = "Login.html";
-}
-
 </script>
-
 </body>
 </html>
