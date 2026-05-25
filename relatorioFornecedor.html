@@ -4,41 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório – Vila das Flores</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --cor-primaria: #7aab7a;
-            --cor-acento: #e8736a;
-            --cor-fundo: #f7f3ef;
-            --cor-escura: #4a5a4a;
-            --cor-texto: #3a3a3a;
-            --fonte-titulo: 'Playfair Display', serif;
-            --fonte-corpo: 'Lato', sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--fonte-corpo); background: var(--cor-fundo); color: var(--cor-texto); }
-
-        header {
-            background: white;
-            padding: 1rem 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .logo-circulo {
-            width: 40px; height: 40px;
-            background: var(--cor-primaria); color: white;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700;
-        }
-        header h1 { font-family: var(--fonte-titulo); font-size: 1.3rem; color: var(--cor-escura); }
-        header a { margin-left: auto; font-size: 0.9rem; color: var(--cor-primaria); font-weight: 600; text-decoration: none; }
-
         .page-title {
             text-align: center;
             padding: 2.5rem 1rem 1rem;
@@ -46,13 +15,11 @@
             font-size: 2rem;
             color: var(--cor-escura);
         }
-
         .container {
             width: 90%;
             max-width: 1100px;
             margin: 0 auto 3rem;
         }
-
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -68,30 +35,38 @@
             transition: transform 0.25s;
         }
         .card:hover { transform: translateY(-4px); }
-        .card h2 { color: var(--cor-escura); font-size: 1rem; margin-bottom: 0.75rem; font-family: var(--fonte-corpo); font-weight: 600; }
+        .card h2 { color: var(--cor-escura); font-size: 1rem; margin-bottom: 0.75rem; font-weight: 600; }
         .card p { font-size: 2rem; font-weight: 700; color: var(--cor-primaria); }
-
         .section-title {
             font-family: var(--fonte-titulo);
             font-size: 1.4rem;
             color: var(--cor-escura);
             margin-bottom: 1.25rem;
         }
-
         #listaProdutos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.25rem;
         }
-        .produto {
+        .produto-relatorio {
             background: white;
             padding: 1.25rem;
             border-radius: 14px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
-        .produto h3 { color: var(--cor-escura); font-family: var(--fonte-titulo); margin-bottom: 0.5rem; }
-        .produto p { font-size: 0.9rem; color: #666; margin: 4px 0; }
-
+        .produto-relatorio h3 { color: var(--cor-escura); font-family: var(--fonte-titulo); margin-bottom: 0.5rem; }
+        .produto-relatorio p { font-size: 0.9rem; color: #666; margin: 4px 0; }
+        .produto-relatorio button {
+            margin-top: 0.75rem;
+            background: var(--cor-acento);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
         .sem-acesso {
             text-align: center;
             padding: 4rem 2rem;
@@ -101,11 +76,15 @@
     </style>
 </head>
 <body>
+
 <script src="nav.js"></script>
-<script src="relatorioFornecedor.js"></script>
+
+<h1 class="page-title">Painel do Fornecedor</h1>
+<div class="container" id="conteudo"></div>
+
 <script>
-    // Proteção: só fornecedor acessa
     let tipo = localStorage.getItem("tipoUsuario");
+    let fornecedorLogado = localStorage.getItem("fornecedorLogado");
     let conteudo = document.getElementById("conteudo");
 
     if (tipo !== "fornecedor") {
@@ -115,17 +94,57 @@
             <a href="Login_julia.html" style="color: var(--cor-primaria); font-weight:600;">Fazer login como fornecedor</a>
         </div>`;
     } else {
+        // 1. Cria o HTML dos cards e lista primeiro
         conteudo.innerHTML = `
             <div class="cards">
                 <div class="card"><h2>Total de Produtos</h2><p id="totalProdutos">0</p></div>
-                <div class="card"><h2>Valor Total</h2><p id="valorTotal">R$ 0</p></div>
+                <div class="card"><h2>Valor Total em Estoque</h2><p id="valorTotal">R$ 0</p></div>
                 <div class="card"><h2>Categorias</h2><p id="totalCategorias">0</p></div>
             </div>
             <h2 class="section-title">Produtos Cadastrados</h2>
             <div id="listaProdutos"></div>
         `;
-        // chama a função do relatorioFornecedor.js que preenche os dados
-        if (typeof carregarRelatorio === "function") carregarRelatorio();
+
+        // 2. Agora que os elementos existem, preenche os dados
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+        let meusProdutos = produtos.filter(p => p.fornecedor === fornecedorLogado);
+
+        document.getElementById("totalProdutos").innerText = meusProdutos.length;
+
+        let valorTotal = meusProdutos.reduce((soma, p) => soma + Number(p.preco), 0);
+        document.getElementById("valorTotal").innerText = "R$ " + valorTotal.toFixed(2);
+
+        let categorias = [...new Set(meusProdutos.map(p => p.categoria))];
+        document.getElementById("totalCategorias").innerText = categorias.length;
+
+        let lista = document.getElementById("listaProdutos");
+
+        if (meusProdutos.length === 0) {
+            lista.innerHTML = "<p style='color:#888;'>Nenhum produto cadastrado ainda.</p>";
+        } else {
+            meusProdutos.forEach((produto, index) => {
+                lista.innerHTML += `
+                <div class="produto-relatorio">
+                    <h3>${produto.nome}</h3>
+                    <p><strong>Categoria:</strong> ${produto.categoria}</p>
+                    <p><strong>Preço:</strong> R$ ${parseFloat(produto.preco).toFixed(2)}</p>
+                    <p><strong>Estoque:</strong> ${produto.quantidade}</p>
+                    <button onclick="removerProduto(${index})">Excluir Produto</button>
+                </div>`;
+            });
+        }
+    }
+
+    function removerProduto(index) {
+        if (!confirm("Deseja excluir este produto?")) return;
+
+        let fornecedorLogado = localStorage.getItem("fornecedorLogado");
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+        let meusProdutos = produtos.filter(p => p.fornecedor === fornecedorLogado);
+        let produtoRemover = meusProdutos[index];
+        produtos.splice(produtos.indexOf(produtoRemover), 1);
+        localStorage.setItem("produtos", JSON.stringify(produtos));
+        location.reload();
     }
 </script>
 </body>

@@ -1,149 +1,132 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="produto.css">
-    <title>Loja de Flores</title>
-
-
-
+    <title>Produtos – Vila das Flores</title>
 </head>
-
 <body>
 
-    
 <div class="pesquisa">
-
-    <input
-    type="text"
-    id="pesquisa"
-    placeholder="Pesquisar flores..."
-    onkeyup="pesquisar()">
-
+    <input type="text" id="pesquisa" placeholder="Pesquisar flores..." onkeyup="pesquisar()">
 </div>
 
 <section class="produtos">
- <div class="card-produto">
-<img src="https://images.openai.com/static-rsc-4/jYeJhXZnVoz8tCvrNqWuXy77iV9My9a_0Z5GxJmN9lfAaDV-YAo04IxKyAYgWWIcG589GP_JhHBAJNqHs45KbYGDwRFopViPli4LK4WnVHzHJPqrTAK3N2q145BLZ8YnHdw9W06cRsUyDkHmohvcPCejGKalRClpcoYjw15DZlZ6rXAivpwdq09BT3Upleu9?purpose=fullsize">
-<h3>Buquê de Rosas</h3>
-<p>R$ 50,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Buquê de Rosas ', 50)">Comprar</button></div>
+    <div class="card-produto">
+        <img src="https://images.openai.com/static-rsc-4/jYeJhXZnVoz8tCvrNqWuXy77iV9My9a_0Z5GxJmN9lfAaDV-YAo04IxKyAYgWWIcG589GP_JhHBAJNqHs45KbYGDwRFopViPli4LK4WnVHzHJPqrTAK3N2q145BLZ8YnHdw9W06cRsUyDkHmohvcPCejGKalRClpcoYjw15DZlZ6rXAivpwdq09BT3Upleu9?purpose=fullsize">
+        <h3>Buquê de Rosas</h3>
+        <p>R$ 50,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Buquê de Rosas ', 50)">Comprar</button>
+    </div>
 
-<div class="card-produto">
-<img src="https://images.openai.com/static-rsc-4/Lv2rArvuKdoPQwbjEsU8X0oj6fxB8BMzQ3mAYatkyk6Q1SjxQe1W55OTXsmMFH8AYLJ8IfPbXWwVV0X9ZEHW_2VbDsjB55Py8HYtBASrbPSVtWY1UrtxflMAdv89KJD133xaLst1INTWJEJvLWJtlWLV0oy8DDJp9URG_InEpvBxtIU6VG9IDuf-UdJjtypA?purpose=fullsize">
-<h3>Girassol</h3>
-<p>R$ 80,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Girassol ', 80)">Comprar</button>
-</div>
+    <div class="card-produto">
+        <img src="https://images.openai.com/static-rsc-4/Lv2rArvuKdoPQwbjEsU8X0oj6fxB8BMzQ3mAYatkyk6Q1SjxQe1W55OTXsmMFH8AYLJ8IfPbXWwVV0X9ZEHW_2VbDsjB55Py8HYtBASrbPSVtWY1UrtxflMAdv89KJD133xaLst1INTWJEJvLWJtlWLV0oy8DDJp9URG_InEpvBxtIU6VG9IDuf-UdJjtypA?purpose=fullsize">
+        <h3>Girassol</h3>
+        <p>R$ 80,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Girassol ', 80)">Comprar</button>
+    </div>
 
-<div class="card-produto">
-<img src="https://images.openai.com/static-rsc-4/PFD9wQOEKr9liWZiHDai4xfql1WbiPC7WCSghp2W5vtfFLfaqD2rKIGs9OcT2TNVCBKJ5o_oGgrDJGUCyvC6mDA6ia3XQRpEsAQLtYL4HLf5QW3ITOPkHgYVO4jeP8z1VNQiJXgKZvJtlxq8-Vcu94iyBDRBJTxn16AIPAG-VMyK3oR8t5CkBHEhvqcYbsV_?purpose=fullsize">
-<h3>Lirio</h3>
-<p>R$ 70,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Lirio ', 70)">Comprar</button>
+    <div class="card-produto">
+        <img src="https://images.openai.com/static-rsc-4/PFD9wQOEKr9liWZiHDai4xfql1WbiPC7WCSghp2W5vtfFLfaqD2rKIGs9OcT2TNVCBKJ5o_oGgrDJGUCyvC6mDA6ia3XQRpEsAQLtYL4HLf5QW3ITOPkHgYVO4jeP8z1VNQiJXgKZvJtlxq8-Vcu94iyBDRBJTxn16AIPAG-VMyK3oR8t5CkBHEhvqcYbsV_?purpose=fullsize">
+        <h3>Lirio</h3>
+        <p>R$ 70,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Lirio ', 70)">Comprar</button>
+    </div>
 
-</div>
+    <div class="card-produto">
+        <img src="https://images.openai.com/static-rsc-4/r0rApuFnW4YgDeEKG7eJkSGduFdiiUTjoQPlnY1DexBJPB4TAPdMqYhQ2VgglByBOMdjaifyztaMV3Q_163p35FDkeUby3ZZ_BbazFSXO-ui4aouYFt43NsyQe0pCdHQyQfMJkqApnR0qH2X8MMg7qjUUGkc4Qdi5H_mF3xVD8f0R7MlRbZgZ1Ad1-6SPP_7?purpose=fullsize">
+        <h3>Orquidea</h3>
+        <p>R$ 90,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Orquidea ', 90)">Comprar</button>
+    </div>
 
+    <div class="card-produto">
+        <img src="https://www.melflores.com.br/ipatinga/43-large_default_2x/tulipas-brancas.jpg">
+        <h3>Tulipa</h3>
+        <p>R$ 90,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Tulipa ', 90)">Comprar</button>
+    </div>
 
-<div class="card-produto">
-<img src="https://images.openai.com/static-rsc-4/r0rApuFnW4YgDeEKG7eJkSGduFdiiUTjoQPlnY1DexBJPB4TAPdMqYhQ2VgglByBOMdjaifyztaMV3Q_163p35FDkeUby3ZZ_BbazFSXO-ui4aouYFt43NsyQe0pCdHQyQfMJkqApnR0qH2X8MMg7qjUUGkc4Qdi5H_mF3xVD8f0R7MlRbZgZ1Ad1-6SPP_7?purpose=fullsize">
-<h3>Orquidea</h3>
-<p>R$ 90,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Orquidea ', 90)">Comprar</button>
-</div>
+    <div class="card-produto">
+        <img src="https://www.riodeflores.com.br/media/catalog/product/4/0/400_2339_1.webp">
+        <h3>Margarida</h3>
+        <p>R$ 97,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Margarida ', 97)">Comprar</button>
+    </div>
 
+    <div class="card-produto">
+        <img src="https://d21wiczbqxib04.cloudfront.net/4p0DXwHf1tD_sfKmZdLo03zs5uE=/1600x0/smart/https://osuper-product-vault.s3.sa-east-1.amazonaws.com/934f78e66b9c78d0e284108c5ddf1ee15f32fa01/77958-5b04cf1b.jpg">
+        <h3>Violeta</h3>
+        <p>R$ 18,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Violeta ', 18)">Comprar</button>
+    </div>
 
-<div class="card-produto">
-<img src="https://www.melflores.com.br/ipatinga/43-large_default_2x/tulipas-brancas.jpg">
-<h3>Tulipa</h3>
-<p>R$ 90,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Tulipa ',90)">Comprar</button>
-</div>
+    <div class="card-produto">
+        <img src="https://docemagiaflores.com/wp-content/uploads/2021/08/buque-gerberas-coloridas-2.jpg">
+        <h3>Buquê de Gérbenas</h3>
+        <p>R$ 164,90</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Buquê de Gérbenas ', 164.90)">Comprar</button>
+    </div>
 
-<div class="card-produto">
-<img src="https://www.riodeflores.com.br/media/catalog/product/4/0/400_2339_1.webp">
-<h3>Margarida</h3>
-<p>R$ 97,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Margarida ',97)">Comprar</button>
-</div>
+    <div class="card-produto">
+        <img src="https://www.melflores.com.br/brasilia/93-large_default_2x/astromelias-brancas.jpg">
+        <h3>Buquê de Astromelias</h3>
+        <p>R$ 210,00</p>
+        <div class="quantidade">
+            <button onclick="diminuirTemp(this)">-</button>
+            <span>0</span>
+            <button onclick="aumentarTemp(this)">+</button>
+        </div>
+        <button class="comprar" onclick="comprar(this,'Buquê de Astromelias ', 210)">Comprar</button>
+    </div>
+</section>
 
-<div class="card-produto">
-<img src="https://d21wiczbqxib04.cloudfront.net/4p0DXwHf1tD_sfKmZdLo03zs5uE=/1600x0/smart/https://osuper-product-vault.s3.sa-east-1.amazonaws.com/934f78e66b9c78d0e284108c5ddf1ee15f32fa01/77958-5b04cf1b.jpg">
-<h3>Violeta</h3>
-<p>R$ 18,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Violeta ', 18)">Comprar</button>
-</div>
-
-<div class="card-produto">
-<img src="https://docemagiaflores.com/wp-content/uploads/2021/08/buque-gerberas-coloridas-2.jpg">
-<h3>Buquê de Gérbenas </h3>
-<p>R$ 164,90</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Buquê de Gérbenas ', 164.90)">Comprar</button>
-</div>
-
-<div class="card-produto">
-<img src="https://www.melflores.com.br/brasilia/93-large_default_2x/astromelias-brancas.jpg">
-<h3>Buquê de Astromelias </h3>
-<p>R$ 210,00</p>
-<div class="quantidade">
-<button onclick="diminuirTemp(this)">-</button>
-<span>0</span>
-<button onclick="aumentarTemp(this)">+</button>
-</div>
-<button class="comprar" onclick="comprar(this,'Buquê de Astromelias ', 210)">Comprar</button>
-</div>
-
-</div>
 <div id="produtosDinamicos"></div>
 
-
-
-
-
-
 <script src="nav.js"></script>
+<script src="produto.js"></script>
 </body>
 </html>
-
