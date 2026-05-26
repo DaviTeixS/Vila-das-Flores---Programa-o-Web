@@ -1,287 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Area do Fornecedor</title>
+    <meta charset="UTF-8">
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#2d2a22;
-    color:white;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-header{
-    background:#111;
-    padding:20px 50px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
+    <title>Meus Produtos</title>
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+    <!-- FONTES -->
 
-.logo-circulo{
-    width:50px;
-    height:50px;
-    background:#7aab7a;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-}
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:25px;
-    font-weight:bold;
-}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-.container{
-    width:90%;
-    max-width:1150px;
-    margin:30px auto;
-}
+    <!-- CSS -->
 
-h1, h2{
-    text-align:center;
-    color:#d8d0a8;
-}
+    <link
+        rel="stylesheet"
+        href="meusProdutos.css"
+    >
 
-.catalogo{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:25px;
-    margin-top:30px;
-}
-
-.produto{
-    background:#111;
-    border-radius:10px;
-    overflow:hidden;
-    text-align:center;
-    padding-bottom:15px;
-}
-
-.produto img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.produto h3{
-    margin:15px 10px 5px;
-}
-
-.produto p{
-    margin:5px;
-}
-
-.preco{
-    color:#7aab7a;
-    font-size:20px;
-    font-weight:bold;
-}
-
-.botao-remover{
-    margin-top:12px;
-    background:#e86b65;
-    color:white;
-    border:none;
-    padding:10px 18px;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.botao-remover:hover{
-    background:#c94f49;
-}
-
-.vendas{
-    margin-top:50px;
-    background:#111;
-    padding:25px;
-    border-radius:10px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-th, td{
-    border:1px solid #444;
-    padding:12px;
-    text-align:left;
-}
-
-th{
-    background:#222;
-    color:#d8d0a8;
-}
-
-@media(max-width:900px){
-    .catalogo{
-        grid-template-columns:repeat(2, 1fr);
-    }
-}
-
-@media(max-width:600px){
-    header{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    .catalogo{
-        grid-template-columns:1fr;
-    }
-}
-
-.botoes-produto{
-    display:flex;
-    gap:10px;
-    margin-top:12px;
-}
-
-.botao-editar,
-.botao-remover{
-    width:100%;
-    color:white;
-}
-
-.botao-editar{
-    background:#7aab7a;
-}
-
-.botao-editar:hover{
-    background:#5f8f5f;
-}
-
-.botao-remover{
-    background:#e86b65;
-}
-
-.botao-remover:hover{
-    background:#c94f49;
-}
-
-</style>
 </head>
 
 <body>
 
+    <!-- HEADER -->
 
-<script src="nav.js"></script>
+    <header>
 
-<main class="container">
+        <div class="logo">
 
-    <h1>Catalogo do Fornecedor</h1>
+            <div class="logo-circulo">
+                VF
+            </div>
 
-    <section id="listaProdutos" class="catalogo">
+            <h1>Vila das Flores</h1>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="produto_index.html">
+                Produtos
+            </a>
+
+            <a
+                href="meusProdutos.html"
+                class="ativo"
+            >
+                Meus Produtos
+            </a>
+
+            <a href="relatorioFornecedor.html">
+                Relatório
+            </a>
+
+            <a href="carrinho.html">
+                Carrinho
+            </a>
+
+        </nav>
+
+        <a
+            href="login.html"
+            class="btn-login"
+        >
+            Login
+        </a>
+
+    </header>
+
+    <!-- TOPO -->
+
+    <section class="topo">
+
+        <h1>
+            Meus Produtos
+        </h1>
+
+        <p>
+            Gerencie, edite e acompanhe todos
+            os produtos cadastrados na
+            Vila das Flores.
+        </p>
+
     </section>
 
+    <!-- PRODUTOS -->
 
-    <section class="vendas">
-        <h2>Vendas do Fornecedor</h2>
+    <main>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Valor unitario</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
+        <section
+            id="listaProdutos"
+            class="grid-produtos"
+        >
 
-            <tbody id="listaVendas">
-                <tr>
-                    <td>Buque de Girassol</td>
-                    <td>2</td>
-                    <td>R$ 69,90</td>
-                    <td>R$ 139,80</td>
-                </tr>
+        </section>
 
-                <tr>
-                    <td>Buque de Lirios</td>
-                    <td>1</td>
-                    <td>R$ 89,90</td>
-                    <td>R$ 89,90</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    </main>
 
-</main>
+    <!-- JS -->
 
-<script>
-    function carregarProdutosFornecedor() {
-        let lista = document.getElementById("listaProdutos");
-        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-        let fornecedor = localStorage.getItem("fornecedorLogado");
-
-        lista.innerHTML = "";
-
-        produtos.forEach((produto, index) => {
-            if (produto.fornecedor === fornecedor) {
-                lista.innerHTML += `
-                <div class="produto">
-                    <img src="${produto.imagem || 'images/flor1.jpg.jpeg'}" alt="${produto.nome}">
-                    <h3>${produto.nome}</h3>
-                    <p>Categoria: ${produto.categoria}</p>
-                    <p>Estoque: ${produto.quantidade}</p>
-                    <p class="preco">R$ ${parseFloat(produto.preco).toFixed(2)}</p>
-
-                    <div class="botoes-produto">
-                        <button class="botao-editar" onclick="editarProduto(${index})">
-                            Editar produto
-                        </button>
-
-                        <button class="botao-remover" onclick="removerProduto(${index})">
-                            Remover produto
-                        </button>
-                    </div>
-                </div>
-            `;
-            }
-        });
-    }
-
-    function editarProduto(index) {
-        localStorage.setItem("produtoEditando", index);
-        window.location.href = "cadastroProdutos.html";
-    }
-
-    function removerProduto(index) {
-        if (!confirm("Deseja remover este produto?")) {
-            return;
-        }
-
-        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-        produtos.splice(index, 1);
-
-        localStorage.setItem("produtos", JSON.stringify(produtos));
-
-        carregarProdutosFornecedor();
-    }
-
-    carregarProdutosFornecedor();
-</script>
+    <script src="meusProdutos.js"></script>
 
 </body>
+
 </html>
