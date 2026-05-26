@@ -267,6 +267,14 @@ nav a:hover{
 
     width: 260px;
 
+    min-height: 460px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
     padding: 18px;
 
     border-radius: 20px;
@@ -468,4 +476,62 @@ footer p{
     border-color: var(--cor-primaria);
 
     box-shadow: 0 4px 12px rgba(122,171,122,0.2);
+}
+/* ==============================
+   USUÁRIO LOGADO
+   ============================== */
+
+.usuario-logado {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--cor-primaria);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuario-logado svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ==============================
+   PAINEL DO FORNECEDOR
+   ============================== */
+
+#painelFornecedor {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    background: #f0ebe3;
+    flex-wrap: wrap;
+}
+
+.btn-painel {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-painel:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+#produtosDinamicos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px 40px 60px;
+}
+
+.quantidade {
+    margin-top: auto;
 }
